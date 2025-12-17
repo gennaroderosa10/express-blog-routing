@@ -6,12 +6,14 @@ const router = express.Router();
 
 // INDEX
 router.get("/", (req, res) => {
-    res.send("visualizzo tutti i post")
+    res.json(posts)
 });
 
 //SHOW 
 router.get("/:id", (req, res) => {
-    res.send("visualizzo solo un post")
+    const id = parseInt(req.params.id);
+    const post = posts.find((post) => post.id === id);
+    res.json(post)
 });
 
 //STORE
